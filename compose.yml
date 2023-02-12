@@ -1,0 +1,16 @@
+services:
+  web: 
+    build: .
+    stop_signal: SIGINT
+    ports:
+      - '8080:8080'
+    volumes:
+      - "./src:/src"
+  tests:
+    build: .
+    volumes:
+      - "./src:/src"
+    depends_on:
+      - web
+    command: ["tests.py"]
+  

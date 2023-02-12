@@ -1,0 +1,46 @@
+html,
+body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    background-color: aliceblue;
+}
+
+body {
+    display: flex;
+}
+
+form {
+    width: 400px;
+    margin: auto;
+    text-align: center;
+    position: relative;
+}
+
+
+
+button#return_button {
+
+    width: 180px;
+    background: #27AE60;
+    font-weight: bold;
+    color: white;
+    border: 0 none;
+    border-radius: 1px;
+    cursor: pointer;
+    padding: 10px;
+    margin: 10px 5px;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+button#return_button:hover {
+    box-shadow: 0 0 0 2px white, 0 0 0 3px #27AE60;
+}
+
+h2 {
+    font-size: 18px;
+    text-transform: uppercase;
+    color: #2C3E50;
+    margin-bottom: 10px;
+}

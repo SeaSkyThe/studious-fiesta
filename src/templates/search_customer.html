@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='search_customer.css') }}" type = "text/css">
+    <title>Search Customers</title>
+</head>
+<body>
+    <form action="/search" method="POST">
+        <h2 id="form_title">Buscar Cliente pelo CPF</h2>
+        
+        <input id="customer_cpf" type="text" name="customer_cpf" placeholder="CPF" required>
+       
+        <button id="submit_button" type="submit">Buscar</button>
+    </form>
+
+    <table class="customers-table">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>CPF</th>
+                <th>Data de Nascimento</th>
+            </tr>
+        </thead>
+        <tbody>
+                {% if customer %}
+                    <tr>
+                        <td>{{ customer.0 }}</td>
+                        <td>{{ customer.1 }}</td>
+                        <td>{{ customer.2 }}</td>
+                    </tr>
+                {% endif %}
+        </tbody>
+    </table>
+
+    <form action="/">
+        <button id="return_button" type="submit">Voltar para a página inicial.</button>
+    </form>
+</body>
+</html>

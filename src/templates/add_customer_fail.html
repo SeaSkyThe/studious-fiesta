@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='subpages.css') }}" type = "text/css">
+    <title>CPF Inválido</title>
+</head>
+<body>
+    
+    <form action="/add">
+        <h2>CPF Inválido</h1>
+        <p>O CPF passado não é válido ou já existe um cadastro com esse CPF, tente novamente.<p>
+        <button id="return_button" type="submit">Voltar para a página de cadastro.</button>
+    </form>
+</body>
+</html>

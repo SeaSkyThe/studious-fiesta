@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='add_customer.css') }}" type = "text/css">
+    <title>Register a new Customer</title>
+</head>
+<body>
+    <form action="/add" method="POST">
+        <h2 id="form_title">Adicione um novo Cliente</h2>
+        <input id="customer_name" type="text" name="customer_name" placeholder="Nome" required>
+        <br>
+        <input id="customer_cpf" type="text" name="customer_cpf" placeholder="CPF" required>
+        <br>
+        <input id="customer_birthdate" type="date" name="customer_birthdate" required>
+        <br>
+        <button id="submit_button" type="submit">Submit</button>
+    </form>
+</body>
+</html>
