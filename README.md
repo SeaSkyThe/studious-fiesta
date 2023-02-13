@@ -1,4 +1,4 @@
-# API Desenvolvida como resolução para o Teste Técnico <i>igma</i>.
+# API Desenvolvida de Consulta e Registro de Clientes (CPF, Nome e Data de Nascimento)
 
 ## Autor: Marcelo Eduardo Rodrigues da Silva Filho
 
