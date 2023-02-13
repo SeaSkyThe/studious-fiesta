@@ -1,4 +1,4 @@
-# API Desenvolvida de Consulta e Registro de Clientes (CPF, Nome e Data de Nascimento)
+# API de Consulta e Registro de Clientes (CPF, Nome e Data de Nascimento)
 
 ## Autor: Marcelo Eduardo Rodrigues da Silva Filho
 
