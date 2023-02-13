@@ -133,4 +133,5 @@ Alguns pontos que consigo enxergar que poderiam melhorar no trabalho aqui desenv
   - Utilizar JSON Schema, por exemplo.
 - Segurança, provavelmente o uso de um ORM para realizar consultas e inserções no banco tornasse o ambiente mais seguro mas, pela simplicidade das querys, preferi manter o escopo de depêndencias o menor possível.
 - Maior atenção no tratamento de exceções.
+- Utilizar o JSON gerado para renderizar os elementos na versão UI (na busca e listagem de Clientes), ao invés de utilizar um formato separado.
   
