@@ -75,10 +75,7 @@ def show_customers():
         else:
             # Dividindo a lista de clientes em chunks de tamanho 10, cada chunk será exibido em uma página
             customers_pages = [customers[i:i+page_size] for i in range(0, len(customers), page_size)]
-
             pagination = Pagination(page=current_page, total=len(customers), search=False, record_name='customers')
-            
-            
             response = make_response(render_template('list_customers.html', customers=customers_pages[current_page-1], pagination=pagination), 200)
 
     return response

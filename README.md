@@ -123,3 +123,14 @@ Um script simples pra popular o banco de dados com alguns registros.
 ### tests.py 
 
 Aqui estão os testes escritos para cada um dos endpoints.
+
+
+### Possíveis melhorias: 
+
+Alguns pontos que consigo enxergar que poderiam melhorar no trabalho aqui desenvolvido:
+
+- Dar mais atenção na verificação de tipos e validação de entradas.
+  - Utilizar JSON Schema, por exemplo.
+- Segurança, provavelmente o uso de um ORM para realizar consultas e inserções no banco tornasse o ambiente mais seguro mas pela simplicidade das querys, preferi manter o escopo de depêndencias o menor possível.
+- Maior atenção no tratamento de exceções.
+  
