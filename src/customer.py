@@ -98,7 +98,7 @@ class Customer:
     
     # Resgata todos os CUSTOMERS do banco de dados
     @staticmethod
-    def get_customers(limit, offset):
+    def get_customers(limit=None, offset=None):
         result = []
         try:
             c = sqlite3.connect("./database/customers.db").cursor()

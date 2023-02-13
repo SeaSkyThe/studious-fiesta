@@ -49,7 +49,7 @@ A partir desse ponto a aplicação estará rodando, abaixo alguns pontos sobre e
 
 ### Documentação:
 
-Abaixo a explicação dos arquivos de script da aplicação
+Abaixo a explicação dos arquivos de script da aplicação e suas principais funções
 
 ### app.py
 
@@ -112,7 +112,7 @@ A principal estrutura do arquivo é a classe `Costumer` que contém:
   - Métodos estáticos: métodos que não dependem do objeto e nem da classe
     - `create_database_table()` - responsável por executar a query de criação da tabela `CUSTOMER` no banco de dados.
     - `add_customer(customer_object)` - responsável por executar a query de `INSERT` de um novo cliente no banco de dados, utilizando os dados contidos em um objeto `Customer`.
-    - `get_customers()` - realiza a query `SELECT * FROM CUSTOMERS`, recuperando todos os clientes existentes no banco.
+    - `get_customers(limit, offset)` - realiza a query `SELECT * FROM CUSTOMERS`, recuperando todos os clientes existentes no banco. Caso sejam passados os parâmetros `limit` e `offset`, será feita uma query com paginação.
     - `get_customer_by_cpf(cpf)` - realiza uma query `SELECT` com a condição dos usuários resgatados terem o campo CPF igual ao passado como parâmetro, devolve apenas 1.
     - `normalize_cpf(cpf)` - tira a máscara do CPF, removendo pontos e hífens da string.
 
