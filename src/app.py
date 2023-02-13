@@ -5,7 +5,7 @@ from customer import Customer
 from populate_db import populate
 import sys
 from flask_paginate import Pagination, get_page_parameter
-
+from utils import add_build_responses, add_gather_data, search_build_response, search_gather_data
 
 app = Flask(__name__)
 app.static_folder = 'static'
@@ -24,28 +24,16 @@ def add_customers():
     if(request.method == 'GET'):
         return render_template('add_customer.html'), 200
     
-    elif(request.method == 'POST'):
+    elif(request.method == 'POST'):  
+        is_json = False
         if(request.data): # Se for Via JSON
-            json = request.get_json()
-            if(json):
-                # Dados do CUSTOMER vindos do json
-                customer_name = json['customer_name']
-                customer_cpf = json['customer_cpf']
-                customer_birthdate = json['customer_birthdate']
-                
-                positive_response = make_response(jsonify({'success': True, 'message': "Cliente cadastrado com sucesso!"}), 200)
-                invalid_cpf_response = make_response(jsonify({'success': False, 'message': "CPF Invalido"}), 422)
-                existant_cpf_response = make_response(jsonify({'success': False, 'message': "Um cliente com esse CPF ja existe"}), 400)
-
+            data = request.get_json()
+            is_json = True
         else: # Se for Via form
-            # Dados do CUSTOMER vindos do form.
-            customer_name = request.form['customer_name']
-            customer_cpf = request.form['customer_cpf']
-            customer_birthdate = request.form['customer_birthdate']
-            
-            positive_response = make_response(render_template('add_customer_success.html'), 201)
-            invalid_cpf_response = make_response(render_template('add_customer_fail.html'), 422)
-            existant_cpf_response = make_response(render_template('add_customer_fail.html'), 400)
+            data = request.form
+
+        customer_name, customer_cpf, customer_birthdate = add_gather_data(data)
+        positive_response, invalid_cpf_response, existant_cpf_response = add_build_responses(is_json)
 
         # Cria o objeto CUSTOMER
         customer = Customer(name=customer_name, cpf=customer_cpf, birthdate=customer_birthdate)
@@ -60,7 +48,7 @@ def add_customers():
         
         # Se não, sucesso.
         return positive_response
-                
+
 @app.route('/show', methods=['GET'])
 def show_customers():
     current_page = request.args.get(get_page_parameter(), type=int, default=1)
@@ -74,7 +62,6 @@ def show_customers():
 
     if(limit and offset):
         response = {"success": True, "clientes": []}
-        
         for customer in customers:
             response['clientes'].append(
                 {'customer_name': customer[0],
@@ -93,8 +80,6 @@ def show_customers():
             
             
             response = make_response(render_template('list_customers.html', customers=customers_pages[current_page-1], pagination=pagination), 200)
-    
-    
 
     return response
     
@@ -104,20 +89,20 @@ def search_customers():
         return render_template('search_customer.html'), 200
     
     elif(request.method == 'POST'):
+        is_json = False
         if(request.data): # Se for Via JSON
-            json = request.get_json()
-            cpf = json['customer_cpf']
+            is_json = True
+            data = request.get_json()
         else: # Se for via FORM
-            cpf = request.form['customer_cpf']
+            data = request.form
         
+        cpf = search_gather_data(data)
+
         customer = []
         customer = Customer.get_customer_by_cpf(cpf)
         
         # Montando a resposta
-        if(request.data):
-            response = make_response(jsonify({'success': True, 'cliente': {'customer_name': customer[0], 'customer_cpf': customer[1], 'customer_birthdate': customer[2]}}), 200)
-        else:
-            response = make_response(render_template('search_customer.html', customer=customer), 200)
+        response = search_build_response(is_json, customer)
         
         return response
 
