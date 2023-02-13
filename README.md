@@ -42,8 +42,8 @@ A partir desse ponto a aplicação estará rodando, abaixo alguns pontos sobre e
     - `/show` - Endpoint que exibe todos os dados de todos os   clientes já cadastrados.
       - Será exibida uma tabela com os dados de 10 clientes, e logo abaixo um menu de paginação para ver os próximos.
 2. A API pode ser utilizada tanto via UI, quanto pelo padrão REST enviando requisições com body no formato JSON:
-    - `/add` - POST com json no formato: `{'customer_cpf': '11111111111', 'customer_name': 'Jorge', 'customer_birthdate' '1990-1'}`
-    - `/search` - POST json no formato: `{'customer_cpf': '11111111111'}` - Receberá uma resposta com um JSON no formato: `{'customer_cpf': '11111111111', 'customer_name': 'Jorge', 'customer_birthdate' '1990-1'}`
+    - `/add` - POST com json no formato: `{'customer_cpf': '11111111111', 'customer_name': 'Jorge', 'customer_birthdate' '1990-1'}`, será criado um cliente no banco com esses dados.
+    - `/search` - POST com json no formato: `{'customer_cpf': '11111111111'}` - Receberá uma resposta com um JSON no formato: `{'customer_cpf': '11111111111', 'customer_name': 'Jorge', 'customer_birthdate' '1990-1'}`
     - `/show` - GET request com params LIMIT (Quantidade de Clientes) e OFFSET (a partir de qual registro) irá te retornar um JSON com a quantidade indicada de Clientes (ex: `http://0.0.0.0:8080/show?limit=10&offset=5`). Caso os parâmetros não sejam passados, a versão gráfica será dada como resposta.
 
 
