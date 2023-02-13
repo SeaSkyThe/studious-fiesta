@@ -98,11 +98,14 @@ class Customer:
     
     # Resgata todos os CUSTOMERS do banco de dados
     @staticmethod
-    def get_customers():
+    def get_customers(limit, offset):
         result = []
         try:
             c = sqlite3.connect("./database/customers.db").cursor()
-            c.execute("SELECT * FROM CUSTOMERS")
+            if(limit and offset):
+                c.execute("SELECT * FROM CUSTOMERS LIMIT ? OFFSET ?", (limit, offset))
+            else:
+                c.execute("SELECT * FROM CUSTOMERS")
             result = c.fetchall()
             c.connection.close()
         except Exception as e:
